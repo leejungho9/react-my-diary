@@ -1,0 +1,39 @@
+.login_form {
+    max-width: 300px;
+  }
+.login_form_forgot {
+    float: right;
+  }
+.ant_col_rtl .login_form_forgot {
+    float: left;
+  }
+.login_form_button {
+    width: 100%;
+  }
+.signin_bg{
+    width: 300px;
+    margin : 20px 0;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  align-items: center;
+}
+.signin_title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #2e2e2e;
+  text-transform: uppercase;
+}
+
+.signin_underline {
+  height: 3px;
+  margin-top: 20px;
+  background: linear-gradient(to right, #000000, #cccccc);
+}
