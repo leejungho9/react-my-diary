@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from './pages/Home';
 import Add from './pages/Add';
 import Edit from './pages/Edit';
@@ -6,11 +6,13 @@ import List from './pages/List';
 import Detail from './pages/Detail';
 import NotFound from './pages/NotFound';
 import Signin from './pages/Signin';
+import { ConnectedRouter } from "connected-react-router";
+import history from "./history";
 
 
 function App() {
   return (
-  <BrowserRouter>
+  <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/edit" component={Edit}/>
         <Route exact path="/list" component={List}/>
@@ -20,7 +22,7 @@ function App() {
         <Route exact path="/" component={Home}/>
         <Route component={NotFound}/>
       </Switch>
-  </BrowserRouter>
+  </ConnectedRouter>
 
   );
 }

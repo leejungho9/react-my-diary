@@ -5,9 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./components/Signin.module.css";
 import "antd/dist/antd.css";
+import { Provider } from 'react-redux';
+import stores from './redux/stores';
+
+const store = stores();
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

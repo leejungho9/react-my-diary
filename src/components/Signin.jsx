@@ -1,12 +1,14 @@
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import styles from './Signin.module.css';
 import { useRef } from 'react';
 
 
-const SigninForm  = ({login}) => {
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
+
+
+const SigninForm = ({login}) => {
+  const usernameRef = useRef();
+  const passwordRef = useRef();
 
   return (
     <div className={styles.container}>
@@ -21,7 +23,7 @@ const SigninForm  = ({login}) => {
         <hr className={styles.signin_underline}></hr>
       <img src="/bg_signin.png" alt="img" className={styles.signin_bg}/>
         <Form.Item
-          name="username"
+          name="email"
           rules={[
             {
               required: true,
@@ -59,10 +61,10 @@ const SigninForm  = ({login}) => {
   );
 
   function click() {
-      const username = usernameRef.current.state.value;
+      const email = usernameRef.current.state.value;
       const password = passwordRef.current.state.value;
-      console.log("로그인 성공" + username, password)
-      login({username, password});
+      login({email, password});
+
   }
 };
 export default SigninForm;
