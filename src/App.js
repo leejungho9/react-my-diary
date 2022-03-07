@@ -10,7 +10,7 @@ import { ConnectedRouter } from "connected-react-router";
 import history from "./history";
 
 
-function App() {
+const App = () => {
   return (
   <ConnectedRouter history={history}>
       <Switch>

@@ -1,7 +1,7 @@
+
 import { push } from "connected-react-router";
-import { handleActions } from "redux-actions";
-import { createActions } from "redux-actions";
-import { takeEvery, put, call } from "redux-saga/effects";
+import { handleActions , createActions} from "redux-actions";
+import { takeEvery, put, call, select } from "redux-saga/effects";
 import TokenService from "../services/TokenService";
 import UserService from "../services/UserService";
 
@@ -20,7 +20,7 @@ const initalState = {
 const prefix = 'my-diary/auth';
 
 
-export const {pending, success, fail} = createActions("PENDING", "SUCCESS", "FAIL", prefix);
+export const {pending, success, fail} = createActions("PENDING", "SUCCESS", "FAIL", {prefix});
 
 const reducer = handleActions({
     PENDING : (state) => ({...state, loading : true, error : null}),
@@ -43,12 +43,21 @@ function* loginSaga(action) {
         yield put(success(token));
         yield put(push('/'));
     }catch(error){
-        yield put(fail(new Error(error?.response?.data.error || 'ERROR')))
+        yield put(fail(new Error(error?.response?.data?.error || 'ERROR')))
     }
 }
 
 function* logoutSaga() {
-
+    try{
+        yield put(pending());
+        const token = yield select(state => state.auth.token);
+        yield call(UserService.logout, token);
+        TokenService.set(token);
+    } catch(error){
+    } finally {
+        TokenService.remove();
+        yield put(success(null));
+    }
 }
 
 export function* authSaga() {

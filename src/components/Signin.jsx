@@ -7,7 +7,7 @@ import { useRef } from 'react';
 
 
 const SigninForm = ({login}) => {
-  const usernameRef = useRef();
+  const eamilRef = useRef();
   const passwordRef = useRef();
 
   return (
@@ -31,7 +31,7 @@ const SigninForm = ({login}) => {
             },
           ]}
         >
-          <Input prefix={<UserOutlined className={styles.site_form_item_icon} />} placeholder="Username" ref={usernameRef} />
+          <Input prefix={<UserOutlined className={styles.site_form_item_icon} />} placeholder="Username" ref={eamilRef} />
         </Form.Item>
         <Form.Item
           name="password"
@@ -61,7 +61,7 @@ const SigninForm = ({login}) => {
   );
 
   function click() {
-      const email = usernameRef.current.state.value;
+      const email = eamilRef.current.state.value;
       const password = passwordRef.current.state.value;
       login({email, password});
 
