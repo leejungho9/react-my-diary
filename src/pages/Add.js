@@ -1,3 +1,14 @@
+
+import AddContainer from "../containers/AddContainer";
+import useToken from "../useToken";
+import { Redirect } from "react-router-dom";
 export default function Add() {
-    return (<div>add 페이지</div>);
+    const token = useToken();
+   
+   if(token === null) {
+        return (
+            <Redirect to ="/signin"/>
+        );
+   } 
+   return <AddContainer/>
 }

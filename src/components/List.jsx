@@ -5,9 +5,7 @@ import Layout from './Layout';
 //  diarys Diary[] | null;
 //  loading : boolean; 
 //}
-const List = ({loading, diarys}) => {
-    const goAdd = () => {};
-    const logout = () => {};
+const List = ({diarys, loading, goAdd, logout}) => {
 
     return  (
       <Layout>
@@ -23,7 +21,6 @@ const List = ({loading, diarys}) => {
                   key : 'number',
                   width: '10%',
                   align : 'center',
-                  
               },
               {
                   title : '제목',
@@ -31,6 +28,7 @@ const List = ({loading, diarys}) => {
                   key : 'title',
                   width: '50%',
                   align : 'center',
+           
               },
               {
                   title : '날짜',
@@ -48,7 +46,6 @@ const List = ({loading, diarys}) => {
               },
           ]}
           loading = { diarys === null || loading }
-
           rowKey = "diaryId"
           />
       </Layout>

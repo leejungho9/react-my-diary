@@ -14,11 +14,10 @@ const App = () => {
   return (
   <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/edit" component={Edit}/>
-        <Route exact path="/list" component={List}/>
-        <Route exact path="/detail" component={Detail}/>
-        <Route exact path="/add" component={Add}/>
+        <Route exact path="/edit/:id" component={Edit}/>
+        <Route exact path="/diary/:id" component={Detail}/>
         <Route exact path="/signin" component={Signin}/>
+        <Route exact path="/add" component={Add}/>
         <Route exact path="/" component={Home}/>
         <Route component={NotFound}/>
       </Switch>
