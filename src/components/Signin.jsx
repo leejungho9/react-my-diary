@@ -1,15 +1,17 @@
-import { Form, Input, Button } from 'antd';
+
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import styles from './Signin.module.css';
 import { useRef } from 'react';
+import { Button, Form, Input } from 'antd';
 
 
 
 
 const SigninForm = ({login}) => {
-  const eamilRef = useRef();
-  const passwordRef = useRef();
+  const eamilRef = useRef(null);
+  const passwordRef = useRef(null);
 
+  
   return (
     <div className={styles.container}>
       <Form
@@ -61,9 +63,9 @@ const SigninForm = ({login}) => {
   );
 
   function click() {
-      const email = eamilRef.current.state.value;
-      const password = passwordRef.current.state.value;
-      login({email, password});
+    const email = eamilRef.current.input.value;
+    const password = passwordRef.current.input.value;
+    login({email, password});
 
   }
 };

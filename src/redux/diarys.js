@@ -11,7 +11,7 @@ const initalState = {
     error : null,
 }
 
-const prefix = 'my-diary/diary';
+const prefix = 'my-diary/diarys';
 
 export const {pending, success, fail} = createActions("PENDING", "SUCCESS", "FAIL", {prefix});
 
@@ -25,6 +25,6 @@ export default reducer;
 
 
 //Saga 정의
-export function booksSaga() {
+export function diarySaga() {
     
 }
