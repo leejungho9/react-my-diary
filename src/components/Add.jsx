@@ -1,9 +1,15 @@
 import Layout from "./Layout"
-import {PageHeader, Button, Input, } from 'antd';
+import {PageHeader, Button, Input, message, } from 'antd';
 import styles from "./Add.module.css";
 import TextArea from "antd/lib/input/TextArea";
+import Feeling from "./Feeling";
+import { useRef } from "react";
 
-const Add = ({back, loading, logout}) => {
+const Add = ({back, loading, logout, add, title, weather, content}) => {
+    const titleRef = useRef();
+    const weatherRef = useRef();
+    const contentRef = useRef();
+
     return (
          <Layout>
             <PageHeader onBack= {back}
@@ -17,21 +23,31 @@ const Add = ({back, loading, logout}) => {
         />
 
         <div className={styles.add}>
-            <div className={styles.container}>
                 <div className={styles.input_title}>
                     제목
                     <span className={styles.required}> *</span>
                 </div>
                 <div className={styles.input_area}>
-                    <Input placeholder="Title" className={styles.input_input_title} />
+                    <Input placeholder="Title" className={styles.input_input_title} ref={titleRef}/>
                 </div>
+            <div className={styles.container}>
                 <div className={styles.input_weather}>
                     날씨
                     <span className={styles.required}> *</span>
+                    <div className={styles.input_area}>
+                        <Input placeholder="Weather" className={styles.input_input_weather} ref={weatherRef} />
+                    </div>
                 </div>
-                <div className={styles.input_area}>
-                    <Input placeholder="weather" className={styles.input_input_weather} />
+       
+                <div className={styles.input_weather}>
+                    만족도
+                    <div className={styles.input_area}>
+                    <div className={styles.input_input_feeling}>
+                        <Feeling/>
+                    </div>
+                    </div>
                 </div>
+   
             </div>
 
             <div className={styles.input_comment}>
@@ -42,12 +58,11 @@ const Add = ({back, loading, logout}) => {
                 <TextArea
                 className={styles.input_content}
                 rows={15}
-                placeholder="Comment"
+                placeholder="Content"
+                ref={contentRef}
                 />
             </div>
             
-         
-
             <div className={styles.button_area}>
                 <Button size="large" loading={loading} onClick={click} className={styles.button}>
                     작성완료
@@ -57,8 +72,19 @@ const Add = ({back, loading, logout}) => {
         </Layout>
         );
             function click () {
-
+                const title = titleRef.current.input.value;
+                const weather = weatherRef.current.input.value;
+                const content =  contentRef.current.resizableTextArea.props.value;
+      
+                if(title === undefined || weather === undefined || content === undefined) {
+                    message.error(' 모든 내용을 입력해주세요')
+                    return;
+                } 
+                add({
+                    title, weather, content
+                })
             }
+           
 }
 
 export default Add;

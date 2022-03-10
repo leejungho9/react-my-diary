@@ -1,26 +1,34 @@
 
 import { Button, PageHeader, Table } from 'antd';
+import { useEffect } from 'react';
+import Diary from './Diary';
 import Layout from './Layout';
 //  List Props {
 //  diarys Diary[] | null;
 //  loading : boolean; 
 //}
-const List = ({diarys, loading, goAdd, logout}) => {
+const List = ({diarys, loading, goAdd, logout, getDiary}) => {
+    useEffect(()=> {
+        getDiary();
+    }, [getDiary]);
 
+  
     return  (
       <Layout>
               <PageHeader title ={<div>내 일기장</div>}
               extra = {[<Button key="2" type="primary" onClick={goAdd}>일기 추가</Button>,
               <Button key="1" type="primary" onClick={logout}>로그아웃</Button>]}
               />        
-          <Table dataSource={[]}
+          <Table dataSource={[diarys]}
           columns={[
               {
                   title : '번호',
                   dataIndex : 'number',
                   key : 'number',
-                  width: '10%',
+                  width: '8%',
                   align : 'center',
+                  render : (diarys)=> {}
+              
               },
               {
                   title : '제목',
@@ -34,9 +42,10 @@ const List = ({diarys, loading, goAdd, logout}) => {
                   title : '날짜',
                   dataIndex : 'date',
                   key : 'date',
-                  width: '20%',
+                  width: '22%',
                   align : 'center',
               },
+          
               {
                   title : '날씨',
                   dataIndex : 'weather',
@@ -45,7 +54,7 @@ const List = ({diarys, loading, goAdd, logout}) => {
                   align : 'center',
               },
           ]}
-          loading = { diarys === null || loading }
+        //   loading = { diarys === null || loading }
           rowKey = "diaryId"
           />
       </Layout>

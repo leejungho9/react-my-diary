@@ -29,7 +29,7 @@ const Diary = ({diaryId, title, date, weather }) => (<div>
             <Button
                 size="small"
                 shape="circle"
-                icon={<EditOutlined/>}
+               
             />
         </Tooltip>
         <Tooltip title="Delete">
@@ -37,7 +37,7 @@ const Diary = ({diaryId, title, date, weather }) => (<div>
                 size="small"
                 type="primary"
                 shape="circle"
-                icon={<DeleteOutlined/>}
+        
             />
         </Tooltip>
     </div>
