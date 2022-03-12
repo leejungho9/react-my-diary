@@ -1,49 +1,46 @@
 
 import { Button, PageHeader, Table } from 'antd';
 import { useEffect } from 'react';
-import Diary from './Diary';
 import Layout from './Layout';
-//  List Props {
-//  diarys Diary[] | null;
-//  loading : boolean; 
-//}
-const List = ({diarys, loading, goAdd, logout, getDiary}) => {
-    useEffect(()=> {
-        getDiary();
-    }, [getDiary]);
+import moment from "moment";
 
-  
+
+
+const List = ({diarys, loading, goAdd, logout,error}) => {
+
+    useEffect(()=> {
+        if(error) {
+            logout();
+        }
+    },[error, logout]);
+
+
+
     return  (
       <Layout>
               <PageHeader title ={<div>내 일기장</div>}
               extra = {[<Button key="2" type="primary" onClick={goAdd}>일기 추가</Button>,
               <Button key="1" type="primary" onClick={logout}>로그아웃</Button>]}
               />        
-          <Table dataSource={[diarys]}
+          <Table  dataSource={diarys}
           columns={[
-              {
-                  title : '번호',
-                  dataIndex : 'number',
-                  key : 'number',
-                  width: '8%',
-                  align : 'center',
-                  render : (diarys)=> {}
               
-              },
               {
                   title : '제목',
                   dataIndex : 'title',
                   key : 'title',
-                  width: '50%',
+                  width: '58%',
                   align : 'center',
-           
+    
               },
               {
                   title : '날짜',
-                  dataIndex : 'date',
                   key : 'date',
                   width: '22%',
                   align : 'center',
+                 
+                 render : () =>   moment().format('MM-DD-YYYY hh:mm a')
+
               },
           
               {
@@ -53,12 +50,17 @@ const List = ({diarys, loading, goAdd, logout, getDiary}) => {
                   width: '20%',
                   align : 'center',
               },
+              
           ]}
-        //   loading = { diarys === null || loading }
-          rowKey = "diaryId"
+           loading = {  loading }
+           
           />
+          
       </Layout>
+        
       );
+
+    
 }
 
 export default List;

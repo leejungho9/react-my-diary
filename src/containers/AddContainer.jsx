@@ -7,11 +7,17 @@ import { addDiary as addDiarySagaStart} from "../redux/diarys";
 import { getDiary as getDiarySagaStart} from "../redux/diarys";
 
 const AddContainer = () => {
-    const loading = useSelector(state => state.diarys.loading);
+    const diarys = useSelector(
+        (state) => state.diarys.diarys);
+    
+    const loading = useSelector(
+        (state) => state.diarys.loading);
+        
+    const error = useSelector(
+        (state) => state.diarys.error);
+   
     const dispatch = useDispatch();
   
-    const diarys = useSelector(  (state) => state.diarys.diarys);
-
     const back = useCallback(()=> {
         dispatch(goBack())
     }, [dispatch])
@@ -22,13 +28,14 @@ const AddContainer = () => {
 
     const add = useCallback ((diary)=> {
         dispatch(addDiarySagaStart(diary))
+    
     }, [dispatch])
 
     const getDiary = useCallback(()=> {
         dispatch(getDiarySagaStart());
     },[dispatch])
 
-    return <Add diarys={diarys} loading={loading} back={back} getDiary={getDiary} logout={logout} add={add}/>;
+    return <Add diarys={diarys} error={error} loading={loading} back={back} getDiary={getDiary} logout={logout} add={add}/>;
 }
 
 export default AddContainer;

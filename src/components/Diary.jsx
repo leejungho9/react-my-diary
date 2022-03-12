@@ -1,9 +1,10 @@
-import { DeleteOutlined, EditOutlined, } from "@ant-design/icons";
-import { Button, Tooltip } from "antd";
+
 import momnet from "moment";
 import { Link } from "react-router-dom";
 import styles from './Diary.module.css'
-const Diary = ({diaryId, title, date, weather }) => (<div> 
+
+const Diary = ({diaryId, title, date, weather }) => (
+<div> 
      <div>
         <Link to={`/diary/${diaryId}`}>
             {diaryId}
@@ -24,22 +25,6 @@ const Diary = ({diaryId, title, date, weather }) => (<div>
             {weather}
         </Link>
     </div>
-    <div>
-        <Tooltip title="Edit">
-            <Button
-                size="small"
-                shape="circle"
-               
-            />
-        </Tooltip>
-        <Tooltip title="Delete">
-            <Button
-                size="small"
-                type="primary"
-                shape="circle"
-        
-            />
-        </Tooltip>
-    </div>
+
 </div>)
 export default Diary;

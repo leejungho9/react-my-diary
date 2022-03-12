@@ -3,7 +3,7 @@ import { push } from "connected-react-router";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import List from "../components/List";
-import { logout } from "../redux/auth";
+import { logout as logoutSagaStart } from "../redux/auth";
 import { getDiary as getDiarySagaStart} from "../redux/diarys";
 
 export default function ListContainer(props) {
@@ -19,6 +19,10 @@ export default function ListContainer(props) {
         dispatch(push("/add"));
     },[dispatch])
     
+    const logout = useCallback(()=> {
+        dispatch(logoutSagaStart());
+    },[dispatch])
+
     return <List 
     {...props}
     diarys = {diarys} 

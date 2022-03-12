@@ -5,7 +5,7 @@ import TextArea from "antd/lib/input/TextArea";
 import Feeling from "./Feeling";
 import { useRef } from "react";
 
-const Add = ({back, loading, logout, add, title, weather, content}) => {
+const Add = ({back, loading, logout, add}) => {
     const titleRef = useRef();
     const weatherRef = useRef();
     const contentRef = useRef();
@@ -75,7 +75,7 @@ const Add = ({back, loading, logout, add, title, weather, content}) => {
                 const title = titleRef.current.input.value;
                 const weather = weatherRef.current.input.value;
                 const content =  contentRef.current.resizableTextArea.props.value;
-      
+
                 if(title === undefined || weather === undefined || content === undefined) {
                     message.error(' 모든 내용을 입력해주세요')
                     return;
