@@ -5,7 +5,7 @@ import Add from "../components/Add";
 import { logout as logoutSagaStart} from "../redux/auth";
 import { addDiary as addDiarySagaStart} from "../redux/diarys";
 import { getDiary as getDiarySagaStart} from "../redux/diarys";
-
+import { useParams } from 'react-router-dom';
 const AddContainer = () => {
     const diarys = useSelector(
         (state) => state.diarys.diarys);
@@ -28,14 +28,19 @@ const AddContainer = () => {
 
     const add = useCallback ((diary)=> {
         dispatch(addDiarySagaStart(diary))
-    
+    console.log(diary);
     }, [dispatch])
 
     const getDiary = useCallback(()=> {
         dispatch(getDiarySagaStart());
     },[dispatch])
+    
+    console.log(diarys)  
+    
+    
 
-    return <Add diarys={diarys} error={error} loading={loading} back={back} getDiary={getDiary} logout={logout} add={add}/>;
+
+    return <Add  diarys={diarys} error={error} loading={loading} back={back} getDiary={getDiary} logout={logout} add={add}/>;
 }
 
 export default AddContainer;

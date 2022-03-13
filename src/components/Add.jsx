@@ -4,11 +4,14 @@ import styles from "./Add.module.css";
 import TextArea from "antd/lib/input/TextArea";
 import Feeling from "./Feeling";
 import { useRef } from "react";
+import { diarySaga } from "../redux/diarys";
+
 
 const Add = ({back, loading, logout, add}) => {
     const titleRef = useRef();
     const weatherRef = useRef();
     const contentRef = useRef();
+
 
     return (
          <Layout>
@@ -76,12 +79,17 @@ const Add = ({back, loading, logout, add}) => {
                 const weather = weatherRef.current.input.value;
                 const content =  contentRef.current.resizableTextArea.props.value;
 
+
+                
+
                 if(title === undefined || weather === undefined || content === undefined) {
                     message.error(' 모든 내용을 입력해주세요')
                     return;
                 } 
+                
+                
                 add({
-                    title, weather, content
+                    title, weather, content, 
                 })
             }
            

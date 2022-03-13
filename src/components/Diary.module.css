@@ -1,30 +1,44 @@
+a {
+  color: black !important;
 
-.book {
+}
+.diary {
     display: table;
     overflow: hidden;
   }
   
+  .number {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 14px;
+    padding-left: 30px;
+    width: 100px;
+
+
+  }
   .title {
     display: table-cell;
     vertical-align: middle;
     font-size: 14px;
-    font-weight: bold;
-    padding-left: 10px;
+    padding-left: 30px;
+    width: 400px;
+
   }
   
   .link_detail_title {
-    color: #0a222e;
+    color: #612424;
   }
   
-  .author {
+  .weather {
     display: table-cell;
     vertical-align: middle;
     font-size: 14px;
-    font-weight: bold;
-    padding-left: 10px;
+    padding-left: 30px;
+    width: 100px;
+
   }
   
-  .link_detail_author {
+  .link_detail_weather {
     color: #28546a;
   }
   
@@ -33,26 +47,8 @@
     display: table-cell;
     vertical-align: middle;
     font-size: 14px;
-    padding-left: 10px;
+    padding-left: 30px;
+    width: 200px;
   }
-  
-  .tooltips {
-    color: #999999;
-    display: table-cell;
-    vertical-align: middle;
-    font-size: 14px;
-    padding-left: 10px;
-  }
-  
-  .link_url {
-    font-size: 12px;
-  }
-  
-  .button_url {
-    margin-right: 5px;
-  }
-  
-  .button_edit {
-    margin-right: 5px;
-  }
+
   

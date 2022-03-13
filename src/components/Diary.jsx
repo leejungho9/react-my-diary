@@ -1,11 +1,11 @@
-
-import momnet from "moment";
+import moment from "moment";
 import { Link } from "react-router-dom";
 import styles from './Diary.module.css'
 
-const Diary = ({diaryId, title, date, weather }) => (
-<div> 
-     <div>
+const Diary = ({createdAt, diaryId, title, date, weather }) => (
+
+<div className={styles.diary}> 
+     <div className={styles.number}>
         <Link to={`/diary/${diaryId}`}>
             {diaryId}
         </Link>
@@ -16,12 +16,10 @@ const Diary = ({diaryId, title, date, weather }) => (
         </Link>
     </div>
     <div className={styles.created}>
-        <Link to={`/diary/${diaryId}`}>
-            {momnet().format('MM-DD-YYYY hh:mm a')}
-        </Link>
+           {createdAt}
     </div>
-    <div >
-        <Link to={`/diary/${diaryId}`}>
+    <div className={styles.weather} >
+        <Link to={`/diary/${diaryId}`} className={styles.link_detail_weather}>
             {weather}
         </Link>
     </div>

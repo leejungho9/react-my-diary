@@ -5,7 +5,7 @@ import { push } from "connected-react-router";
 import { createActions } from "redux-actions";
 import { handleActions } from "redux-actions";
 import {takeEvery, put, takeLatest, select} from "redux-saga/effects";
-
+import moment from "moment";
 
 
 const initalState = {
@@ -52,11 +52,17 @@ function* addDiarySaga(action) {
         yield push(pending());
         const diary = action.payload.diary;
         const diarys = yield select(state => state.diarys.diarys);
+        const createdAt = moment().format('MM-DD-YYYY hh:mm a')
+       
         if(diarys === null){
             yield put(success([diary]));
+            const diaryId = 1;
+            diary['diaryId'] = diaryId;
         } else {
             yield put(success([...diarys , diary]));
+            diary['diaryId'] = diarys.length + 1;
         }
+        diary['createdAt'] = createdAt;
         yield put(push('/'));
     } catch(error) {
         yield put(fail(new Error(error?.response?.data?.error || 'ERROR')))
