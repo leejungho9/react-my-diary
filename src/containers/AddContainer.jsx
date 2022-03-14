@@ -28,6 +28,7 @@ const AddContainer = () => {
 
     const add = useCallback ((diary)=> {
         dispatch(addDiarySagaStart(diary))
+        console.log(diary);
     }, [dispatch])
 
     const getDiary = useCallback(()=> {

@@ -4,7 +4,7 @@
 import { push } from "connected-react-router";
 import { createActions } from "redux-actions";
 import { handleActions } from "redux-actions";
-import {takeEvery, put, takeLatest, select} from "redux-saga/effects";
+import {takeEvery, put, select} from "redux-saga/effects";
 import moment from "moment";
 
 
@@ -29,26 +29,16 @@ export default reducer;
 
 //Saga 정의
 
-export const {addDiary , getDiary}  = createActions(
+export const {addDiary , getDiary , deleteDiary}  = createActions(
     {
       ADD_DIARY : (diary) => ({diary}),
+      DELETE_DIARY : (diary) => ({diary})
     }, {prefix},
   );
 
-// function* getDiarySaga() {
-//     try{
-//         yield put(pending());
-//         const token = yield select((state) => state.auth.token);
-//         const diarys = yield call( token);
-//         yield put(success(diarys));
-//     }catch(error){
-//         yield put(fail(new Error(error?.response?.data?.error || 'UNKNOWN_ERROR')));
-//     }
-// }
 
 function* addDiarySaga(action) {
     try{
-        console.log(action)
         yield push(pending());
         const diary = action.payload.diary;
         const diarys = yield select(state => state.diarys.diarys);
@@ -58,10 +48,12 @@ function* addDiarySaga(action) {
             yield put(success([diary]));
             const diaryId = 1;
             diary['diaryId'] = diaryId;
+
         } else {
             yield put(success([...diarys , diary]));
             diary['diaryId'] = diarys.length + 1;
         }
+       
         diary['createdAt'] = createdAt;
         yield put(push('/'));
     } catch(error) {
@@ -69,8 +61,22 @@ function* addDiarySaga(action) {
     }
 
 }
+
+function* deleteDiarySaga(action) {
+    try{
+        console.log(action)
+        yield put(pending());
+        const diary = action.payload.diary
+        const diarys = yield select(state => state.diarys.diarys);
+        const diaryId = (diary.diaryId);
+        yield put(success(diarys.filter(diary => diary.diaryId !== diaryId)));
+        yield put(push('/'));
+    } catch(error) {
+
+    }
+}
 export function* diarySaga() {
-    // yield takeLatest(`${prefix}/GET_DIARY`, getDiarySaga);
     yield takeEvery(`${prefix}/ADD_DIARY`, addDiarySaga);
+    yield takeEvery(`${prefix}/DELETE_DIARY`, deleteDiarySaga);
 }
 

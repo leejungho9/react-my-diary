@@ -31,7 +31,7 @@ const List = ({ diarys, loading, goAdd, logout,error, diaryId, }) => {
              render : (text, record) => <Diary {...record}/>
             },
             ]}
-            loading={diarys === null || loading }
+
             rowKey="diaryId"
             pagination={false}
             className={styles.table}

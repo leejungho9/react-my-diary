@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
 import Detail from "../components/Detail"
 import { logout as logoutSaga } from '../redux/auth';
+import { deleteDiary as deleteSaga } from '../redux/diarys';
 
 const DetailContainer = () => {
     const dispatch = useDispatch();
     
     const {id} = useParams();
     const diaryId = parseInt(id) ;
-    
+
     const diarys = useSelector(state => state.diarys.diarys);
 
     const error = useSelector(state => state.diarys.error);
@@ -23,10 +24,11 @@ const DetailContainer = () => {
         dispatch(goBack())
     }, [dispatch]);
 
-   const diary =  diarys.find((diary)=> diary.diaryId === diaryId);
-   console.log(diary);
+    const deletediary = useCallback((diary) => {
+        dispatch(deleteSaga(diary));
+    }, [dispatch]);
 
-    return <Detail diary = {diarys === null ? null : diarys.find((diary) => diary.diaryId === diaryId)} logout={logout} back={back} error={error} ></Detail>
+    return <Detail diary = {diarys === null ? null : diarys.find((diary) => diary.diaryId === diaryId)} logout={logout} back={back} error={error} deletediary={deletediary}></Detail>
 }
 
 export default DetailContainer;

@@ -11,8 +11,11 @@ const Add = ({back, loading, logout, add}) => {
     const titleRef = useRef();
     const weatherRef = useRef();
     const contentRef = useRef();
-    const [state, setState] = useState(); 
-    console.log(state)
+
+
+    const [feels, setfeel] = useState(); 
+    console.log(setfeel)
+    
     return (
          <Layout>
             <PageHeader
@@ -51,7 +54,7 @@ const Add = ({back, loading, logout, add}) => {
                     만족도
                     <div className={styles.input_area}>
                     <div className={styles.input_input_feeling}>
-                        <Feeling value={setState} />
+                        <Feeling setfeel={setfeel} />
                         
                     </div>
                     </div>
@@ -85,7 +88,7 @@ const Add = ({back, loading, logout, add}) => {
                 const title = titleRef.current.input.value;
                 const weather = weatherRef.current.input.value;
                 const content =  contentRef.current.resizableTextArea.props.value;
-
+                
 
                 
 
@@ -96,7 +99,7 @@ const Add = ({back, loading, logout, add}) => {
                 
                 
                 add({
-                    title, weather, content, 
+                    title, weather, content, feels
                 })
             }
            
