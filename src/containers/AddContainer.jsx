@@ -2,10 +2,10 @@ import { goBack } from "connected-react-router";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Add from "../components/Add";
-import { logout as logoutSagaStart} from "../redux/auth";
+import { logout as logoutSaga} from "../redux/auth";
 import { addDiary as addDiarySagaStart} from "../redux/diarys";
 import { getDiary as getDiarySagaStart} from "../redux/diarys";
-import { useParams } from 'react-router-dom';
+
 const AddContainer = () => {
     const diarys = useSelector(
         (state) => state.diarys.diarys);
@@ -23,12 +23,11 @@ const AddContainer = () => {
     }, [dispatch])
     
     const logout = useCallback(()=> {
-        dispatch(logoutSagaStart());
+        dispatch(logoutSaga());
     },[dispatch])
 
     const add = useCallback ((diary)=> {
         dispatch(addDiarySagaStart(diary))
-    console.log(diary);
     }, [dispatch])
 
     const getDiary = useCallback(()=> {

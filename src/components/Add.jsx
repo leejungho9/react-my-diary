@@ -3,23 +3,28 @@ import {PageHeader, Button, Input, message, } from 'antd';
 import styles from "./Add.module.css";
 import TextArea from "antd/lib/input/TextArea";
 import Feeling from "./Feeling";
-import { useRef } from "react";
-import { diarySaga } from "../redux/diarys";
+import { useRef, useState } from "react";
+
 
 
 const Add = ({back, loading, logout, add}) => {
     const titleRef = useRef();
     const weatherRef = useRef();
     const contentRef = useRef();
-
-
+    const [state, setState] = useState(); 
+    console.log(state)
     return (
          <Layout>
-            <PageHeader onBack= {back}
-            title={<div> Add Diary </div>}
+            <PageHeader
+             onBack= {back}
+            title={<div> 일기 작성하기 </div>}
             subTitle ="오늘 하루를 정리해보세요"
             extra={[
-            <Button key="1" type="primary" onClick={logout} className={styles.button_logout}>
+            <Button 
+                key="1" 
+                type="primary" 
+                onClick={logout} 
+                className={styles.button_logout}>
                 로그아웃
             </Button>
             ]}
@@ -46,7 +51,8 @@ const Add = ({back, loading, logout, add}) => {
                     만족도
                     <div className={styles.input_area}>
                     <div className={styles.input_input_feeling}>
-                        <Feeling/>
+                        <Feeling value={setState} />
+                        
                     </div>
                     </div>
                 </div>
@@ -63,6 +69,7 @@ const Add = ({back, loading, logout, add}) => {
                 rows={15}
                 placeholder="Content"
                 ref={contentRef}
+                
                 />
             </div>
             
