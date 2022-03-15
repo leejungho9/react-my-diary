@@ -82,9 +82,11 @@ function * editDiarySaga(action ){
         console.log('hf');
         yield put(pending());
         const diarys = yield select(state => state.diarys.diarys);
+        const createdAt = moment().format('MM-DD-YYYY hh:mm a')
         
         const newdiary= yield (action.payload.diaryId, action.payload.diary);   
         newdiary['diaryId'] = action.payload.diaryId;
+        newdiary['createdAt'] = createdAt;
         console.log(newdiary);
         yield put(success(diarys.map((diary)=> (diary.diaryId === newdiary.diaryId?  newdiary : diary))));
         yield put(push('/'));
