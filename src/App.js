@@ -2,7 +2,6 @@ import { Route, Switch } from "react-router-dom";
 import Home from './pages/Home';
 import Add from './pages/Add';
 import Edit from './pages/Edit';
-import List from './pages/List';
 import Detail from './pages/Detail';
 import NotFound from './pages/NotFound';
 import Signin from './pages/Signin';
