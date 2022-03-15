@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Add from "../components/Add";
 import { logout as logoutSaga} from "../redux/auth";
 import { addDiary as addDiarySagaStart} from "../redux/diarys";
-import { getDiary as getDiarySagaStart} from "../redux/diarys";
+
 
 const AddContainer = () => {
     const diarys = useSelector(
@@ -31,16 +31,13 @@ const AddContainer = () => {
         console.log(diary);
     }, [dispatch])
 
-    const getDiary = useCallback(()=> {
-        dispatch(getDiarySagaStart());
-    },[dispatch])
     
     console.log(diarys)  
     
     
 
 
-    return <Add  diarys={diarys} error={error} loading={loading} back={back} getDiary={getDiary} logout={logout} add={add}/>;
+    return <Add  diarys={diarys} error={error} loading={loading} back={back} logout={logout} add={add}/>;
 }
 
 export default AddContainer;

@@ -1,11 +1,18 @@
 
 import { Button, PageHeader , Input, Rate } from "antd";
+import { useState } from "react";
 import styles from "./Detail.module.css"
 import Layout from './Layout';
 const { TextArea } = Input;
 
-const Detail = ({ diary, back, error, deletediary  }) => {
+const Detail = ({ diary, back, error, deletediary, editdiary  }) => {
     console.log(diary)
+
+    const [state] = useState({value: diary.feel});
+  
+    const { value } = state;
+   
+
     return (
         <Layout>
            <PageHeader
@@ -16,7 +23,7 @@ const Detail = ({ diary, back, error, deletediary  }) => {
             <Button
             key="2"
             type="primary"
-            onClick={click}
+            onClick={clickEdit}
             >
             수정하기
           </Button>,
@@ -48,8 +55,8 @@ const Detail = ({ diary, back, error, deletediary  }) => {
                    <div className={styles.input_area}>
                    <div className={styles.input_input_feeling}>
                    <span>
-                    <Rate  value={diary.feels.feel} />
-                    {diary.feels.feel ? <span className="ant-rate-text">{[diary.feels.feel]}</span> : ''}
+                    <Rate  value={value} />
+                    {value ? <span className="ant-rate-text">{[value]}</span> : ''}
                   </span>
            
                    </div>
@@ -73,12 +80,11 @@ const Detail = ({ diary, back, error, deletediary  }) => {
        </Layout>
  );
 
-  function click() {
-    // edit();
-  }
   function clickDelete() {
-
     deletediary(diary);
+  }
+  function clickEdit() {
+    editdiary(diary)
   }
 };
 export default Detail;

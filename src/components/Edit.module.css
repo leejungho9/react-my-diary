@@ -1,0 +1,131 @@
+/* Add.module.css */
+
+.bg {
+    width: 100%;
+  }
+  
+.edit {
+width: 800px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.input_title {
+font-family: Roboto;
+font-size: 12px;
+font-weight: bold;
+text-align: left;
+padding-left: 40px;
+}
+
+.input_comment {
+font-family: Roboto;
+font-size: 12px;
+font-weight: bold;
+margin-top: 10px;
+text-align: left;
+padding-left: 40px;
+}
+
+.input_weather {
+font-family: Roboto;
+font-size: 12px;
+font-weight: bold;
+text-align: left;
+padding-left: 40px ;
+}
+
+.required {
+color: #971931;
+}
+
+.input_area {
+padding-top: 10px;
+padding-bottom: 10px;
+}
+.input_input_title{
+width: 720px !important;
+border-radius: 1px;
+border-width: 1px;
+font-family: Roboto;
+margin-left: 40px !important;
+margin-right: 40px;
+min-height: 100;
+}
+.input_input_weather  {
+width: 300px !important;
+border-radius: 1px;
+border-width: 1px;
+font-family: Roboto;
+
+margin-right: 40px !important;
+min-height: 100;
+}
+.input_input_feeling{
+width: 300px !important;
+border-radius: 1px;
+border-width: 1px;
+font-family: Roboto;
+margin-right: 40px !important;
+min-height: 100;
+display: flex;
+}
+.icon_area{
+  width: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
+.icon {
+  z-index: 3;
+}
+.icon:hover {
+  color : blue;
+}
+.input_content {
+width: 720px !important;
+border-radius: 1px;
+border-width: 1px;
+font-family: Roboto;
+margin-left: 40px !important;
+margin-right: 40px;
+min-height: 100;
+resize: none;
+}
+
+.button_area {
+text-align: right;
+padding-right: 40px;
+margin-top: 20px;
+}
+
+.button {
+border-color: #28546a;
+background-color: #28546a;
+text-transform: uppercase;
+border-radius: 1px;
+border-width: 2px;
+color: white;
+width: 120px;
+}
+
+.button:hover {
+background-color: #28546a;
+color: white;
+}
+
+.button_logout {
+border-color: #28546a;
+background-color: #28546a;
+text-transform: uppercase;
+border-radius: 1px;
+border-width: 2px;
+color: white;
+}
+.container{
+display: flex;
+align-items: center;    
+justify-content: space-between;
+}
+.icons{
+  width: 30px !important;
+}

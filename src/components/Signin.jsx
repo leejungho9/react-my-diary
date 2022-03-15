@@ -21,7 +21,7 @@ const SigninForm = ({login}) => {
           remember: true,
         }}
         >
-        <div className={styles.signin_title}>My Books</div>
+        <div className={styles.signin_title}>My diary</div>
         <hr className={styles.signin_underline}></hr>
       <img src="/bg_signin.png" alt="img" className={styles.signin_bg}/>
         <Form.Item

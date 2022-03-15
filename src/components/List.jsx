@@ -2,12 +2,8 @@
 import { Button, PageHeader, Table } from 'antd';
 import { useEffect } from 'react';
 import Layout from './Layout';
-import moment from "moment";
-import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
 import Diary from './Diary'
 import styles from './List.module.css';
-import { useParams } from 'react-router-dom';
 const List = ({ diarys, loading, goAdd, logout,error, diaryId, }) => {
 
     useEffect(()=> {

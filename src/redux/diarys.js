@@ -29,10 +29,11 @@ export default reducer;
 
 //Saga 정의
 
-export const {addDiary , getDiary , deleteDiary}  = createActions(
+export const {addDiary , deleteDiary, editDiary}  = createActions(
     {
       ADD_DIARY : (diary) => ({diary}),
-      DELETE_DIARY : (diary) => ({diary})
+      DELETE_DIARY : (diary) => ({diary}),
+      EDIT_DIARY : (diaryId,diary) => ({diaryId, diary})
     }, {prefix},
   );
 
@@ -57,7 +58,7 @@ function* addDiarySaga(action) {
         diary['createdAt'] = createdAt;
         yield put(push('/'));
     } catch(error) {
-        yield put(fail(new Error(error?.response?.data?.error || 'ERROR')))
+        yield put(fail(new Error(error?.response?.data?.error || 'UNKNOWN_ERROR')));
     }
 
 }
@@ -72,11 +73,28 @@ function* deleteDiarySaga(action) {
         yield put(success(diarys.filter(diary => diary.diaryId !== diaryId)));
         yield put(push('/'));
     } catch(error) {
+        yield put(fail(new Error(error?.response?.data?.error || 'UNKNOWN_ERROR')));
+    }
+}
 
+function * editDiarySaga(action ){
+    try{
+        console.log('hf');
+        yield put(pending());
+        const diarys = yield select(state => state.diarys.diarys);
+        
+        const newdiary= yield (action.payload.diaryId, action.payload.diary);   
+        newdiary['diaryId'] = action.payload.diaryId;
+        console.log(newdiary);
+        yield put(success(diarys.map((diary)=> (diary.diaryId === newdiary.diaryId?  newdiary : diary))));
+        yield put(push('/'));
+    } catch(error) {
+        yield put(fail(new Error(error?.response?.data?.error || 'UNKNOWN_ERROR')));
     }
 }
 export function* diarySaga() {
     yield takeEvery(`${prefix}/ADD_DIARY`, addDiarySaga);
     yield takeEvery(`${prefix}/DELETE_DIARY`, deleteDiarySaga);
+    yield takeEvery(`${prefix}/EDIT_DIARY`, editDiarySaga);
 }
 

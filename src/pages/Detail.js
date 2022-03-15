@@ -3,7 +3,7 @@ import useToken from "../useToken";
 import DetailContainer from "../containers/DetailContainer"
 
 
-const Detail= () => {
+export default function Detail() {
     const token = useToken();
 
     if(token === null ) {
@@ -13,4 +13,3 @@ const Detail= () => {
 
 }
 
-export default Detail;

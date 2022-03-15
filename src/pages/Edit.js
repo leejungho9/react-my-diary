@@ -1,3 +1,12 @@
+import { Redirect } from "react-router-dom";
+import useToken from "../useToken";
+import EditContainer from "../containers/EditContainer"
+
+
 export default function Edit() {
-    return (<div>Edit 페이지</div>);
+    const token = useToken();
+        if(token === null) {
+            return <Redirect to="/signin"/>;
+        }
+        return <EditContainer/>;
 }
