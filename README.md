@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+## My-diary : 하루 생활을 자유롭게 기록할 수 있는 사이트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 개발 배경 및 개발 목적
+일기는 그날의 자신을 되돌아 볼 시간을 제공하며 자유롭게 자신의 생각과 감정을 표현하여 자기 성찰은 물론, 정신 건강을 개선하는 데에도 도움을을 준다는 연구결과를 바탕으로 타인의 감시가 없는 자유로운 곳에서 하루를 기록할 수 있게 하는 것이 My-diary의 개발목적이다.
 
-## Available Scripts
 
-In the project directory, you can run:
+## 사용기술 및 개발 환경
+- React  (react-router)
+- Redux ( redux-saga , redux-actions, redux-dev-tools)
+- Ant Design
+- CSS 
+- HTML
+- JavaScript
 
-### `npm start`
+## 구현 기능 
++ Redux를 사용하여 효율적으로 전역상태와 로직 파일 관리
++ Redux와 라우팅 기능을 연동하기 위해 connected-react-router 사용 (history객체로 push ) 
++ 리덕스 미들웨어 redux-saga , redux-dev-tools 사용하여 더욱 효율적으로 Redux 관리
++ UI 프레임워크인 Ant Design을 사용해 다양한 컴포넌트 사용 ( 만족도 기능 구현 )
++ CURD 모든 기능 구현
++ axios를 사용하여 비동기식으로 서버와 통신하여 로그인, 로그아웃 기능 구현
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
